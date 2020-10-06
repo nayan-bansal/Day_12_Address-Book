@@ -16,7 +16,7 @@ public class AddressBookMain {
 		
 		while(true) {
 			
-			System.out.println("- Press 1 to Add Contact\n- Press 0 to Exit");
+			System.out.println("- Press 1 to Add Contact\n- Press 2 to Edit the contact\n- Press 0 to Exit");
 			int choice = scan.nextInt();
 			
 			switch(choice) {
@@ -50,10 +50,24 @@ public class AddressBookMain {
 				person.setEmail_Id(scan.next());
 				address.addContact(person);
 				break;
+			
+			case 2:
+				System.out.println("Enter the First Name of Person whoose contact you want to change");
+				String edit  = scan.next();
+				address.editContact(edit);
+				break;
+			case 3: 
+				System.out.println("Enter the First Name of Person whoose contact you want to change");
+				String delete = scan.next();
+				address.deleteContact(delete);
+				break;
+			default:
+				System.out.println("Wrong Entry");
+				break;
 			}
 			
-		}
 		
+		}
 
 	}	
 }
