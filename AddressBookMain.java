@@ -51,8 +51,8 @@ public class AddressBookMain {
 				address.addContact(person);
 				break;
 			}
-			
-		}
+		}			
+		
 		
 
 	}	
