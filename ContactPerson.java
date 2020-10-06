@@ -70,7 +70,5 @@ public class ContactPerson {
 	public void setEmail_Id(String emai_Id) {
 		this.email_Id  = email_Id;
 	}
-
-
 	
 }
