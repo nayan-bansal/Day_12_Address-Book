@@ -6,11 +6,13 @@ public class AddressBookLog {
 
 	ArrayList<ContactPerson> directory = new ArrayList<ContactPerson>();
 	
-	public void addContact(ContactPerson person) {
-		
-		
+	AddressBookDic file = new AddressBookDic();
+	
+	public void addContact(ContactPerson person, String name) {
 		
 		directory.add(person);
+		
+		file.addDic(name,person);
 		
 	}
 
@@ -18,7 +20,7 @@ public class AddressBookLog {
 		
 		Scanner scan = new Scanner(System.in);
 		
-		
+		for(int j=0;j<file.lenDictionary();j++) {
 	for(int i=0;i<directory.size();i++) {
 		
 		ContactPerson p = (ContactPerson)directory.get(i);
@@ -84,7 +86,7 @@ public class AddressBookLog {
 		else
 			break;
 	}
-		
+		}
 }
 
 	public void deleteContact(String delete) {
