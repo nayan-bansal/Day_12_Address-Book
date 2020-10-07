@@ -171,4 +171,34 @@ boolean duplicate = false;
 			
 		}
 	}
+
+	public void countbycity(String count_city) {
+	int count = 0;
+	
+		for(ContactPerson person: directory) {
+			if(person.getCity().equals(count_city)) {
+				count++;	
+			}
+		}
+			if(count>0)
+		System.out.println("Persons in city are "+count);
+			else
+			System.out.println("No Persons in given City");		
+		
+	}
+
+	public void countbystate(String count_state) {
+	int count = 0;
+		
+		for(ContactPerson person: directory) {
+			if(person.getCity().equals(count_state)) {
+				count++;	
+			}
+		}
+			if(count>0)
+		System.out.println("Persons in State are "+count);
+			else
+			System.out.println("No Persons in given State");		
+		
+	}
 }
