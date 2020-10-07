@@ -120,13 +120,13 @@ boolean duplicate = false;
 		return duplicate;
 	}
 
-	public void search( String state) {
+	public void search( String f_name, String l_name) {
 	
 		for(ContactPerson person : directory) {
 			
-			if(person.getState().equals(state) || person.getCity().equals(state))
+			if(person.getFirst_name().equals(f_name) || person.getLast_name().equals(l_name))
 			{
-				System.out.println(person.getFirst_name()+"\n"+person.getLast_name()+"\n"+person.getState()+"\n"+person.getAddress()+"\n"+person.getCity()+"\n"+person.getPhone_number()+"\n"+person.getZip_code()+"\n"+person.getEmail_Id());
+				System.out.println("First Name"+person.getFirst_name()+"\nLast Name:"+person.getLast_name()+"\nState:"+person.getState()+"\nAddress:"+person.getAddress()+"\nCity:"+person.getCity()+"\nPhone Number:"+person.getPhone_number()+"\nZip Code:"+person.getZip_code()+"\nEmail Id:"+person.getEmail_Id());
 				break;
 			}
 			else
@@ -135,6 +135,40 @@ boolean duplicate = false;
 		}
 	}
 
+	public void searchPerson(String city) {
+		
+		ArrayList<ContactPerson> city_list= new ArrayList<>();
+		for(ContactPerson person: directory) {
+			if(person.getCity().equals(city)) {
+				city_list.add(person);
+			}
+		}
+		
+		for(ContactPerson person : city_list) {
+			
+		System.out.println("The Details of the Contact of city : " + person.getCity() + "are given Below:");
+		System.out.println("First Name"+person.getFirst_name()+"\nLast Name:"+person.getLast_name()+"\nState:"+person.getState()+"\nAddress:"+person.getAddress()+"\nCity:"+person.getCity()+"\nPhone Number:"+person.getPhone_number()+"\nZip Code:"+person.getZip_code()+"\nEmail Id:"+person.getEmail_Id());
+				
+			
+		}
+	}
 
-	
+
+	public void searchPersonState(String state) {
+		
+		ArrayList<ContactPerson> state_list= new ArrayList<>();
+		for(ContactPerson person: directory) {
+			if(person.getState().equals(state)) {
+				state_list.add(person);
+			}
+		}
+		
+		for(ContactPerson person : state_list) {
+			
+		System.out.println("The Details of the Contact of city : " + person.getState() + "are given Below:");
+		System.out.println("First Name"+person.getFirst_name()+"\nLast Name:"+person.getLast_name()+"\nState:"+person.getState()+"\nAddress:"+person.getAddress()+"\nCity:"+person.getCity()+"\nPhone Number:"+person.getPhone_number()+"\nZip Code:"+person.getZip_code()+"\nEmail Id:"+person.getEmail_Id());
+				
+			
+		}
+	}
 }
