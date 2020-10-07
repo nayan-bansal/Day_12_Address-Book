@@ -13,13 +13,14 @@ public class AddressBookMain {
 		ContactPerson person = new ContactPerson();
 		
 		System.out.println("Welcome to Address Book Developement Program");	
+		System.out.println("Do you want to create an address book or add contact to an existing Address Book\n- Press 1 for yes\n- Press 2 for No");	
+		int start  = scan.nextInt();
+		if(start == 2)
+			System.exit(0);
+		
+		int count =0;
 		outer:
 		while(true) {
-			System.out.println("Do you want to create an address book or add contact to an existing Address Book\n- Press 1 for yes\n- Press 2 for No");	
-			int start  = scan.nextInt();
-			if(start == 2)
-				System.exit(0);
-			
 		System.out.println("Enter the name of new Address Book or existing address book");
 		String name = scan.next();
 			
@@ -34,12 +35,22 @@ public class AddressBookMain {
 				//System.exit(0);
 				break outer;
 			case 1:
+				
 				System.out.println("Enter the First Name:");
 				person.setFirst_name(scan.next());
 				address.addContact(person);
+				String fname = person.getFirst_name();
 				System.out.println("Enter the Last Name:");
 				person.setLast_name(scan.next());
 				address.addContact(person);
+				String lname = person.getLast_name();
+				
+				if(address.checkName(fname, lname) == true && count!=0)
+				{
+					System.out.println("Duplicate Entry Found!! Please Try Agian");
+					address.deleteDuplicate(fname, lname);
+					break;
+				}
 				System.out.println("Enter the Address:");
 				person.setAddress(scan.next());
 				address.addContact(person);
@@ -60,6 +71,8 @@ public class AddressBookMain {
 				address.addContact(person);
 				
 				file.addDic(name,person);
+				count++;
+				System.out.println(count);
 				break;
 			
 			case 2:
@@ -94,5 +107,4 @@ public class AddressBookMain {
 		   }
 		}
 	}	
-
 

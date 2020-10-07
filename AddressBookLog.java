@@ -93,6 +93,14 @@ public class AddressBookLog {
 }
 =======
 
+	
+	public void deleteDuplicate(String firstname, String lastname) {
+		for(int i=0; i<directory.size();i++) {
+		if(firstname.equals(directory.get(i).getFirst_name()) && directory.get(i).getAddress() == null && lastname.equals(directory.get(i).getLast_name()))
+			directory.remove(i);
+		} 
+	}
+
 	public void deleteContact(String delete) {
 		
 		for(int i=0; i<directory.size();i++) {
@@ -102,6 +110,21 @@ public class AddressBookLog {
 		System.out.println("Details of "+delete+" removed");
 		}
 	}
+
+
+
+	public boolean checkName(String first_name, String last_name) {
+boolean duplicate = false;
+		
+		for(int i=0;i<directory.size();i++) {
+			if(directory.get(i).getFirst_name() == first_name && directory.get(i).getLast_name() == last_name )
+				duplicate = true;
+		}
+		
+		return duplicate;
+	}
+
+
 	
 }
 <<<<<<< HEAD
