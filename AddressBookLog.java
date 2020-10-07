@@ -88,10 +88,6 @@ public class AddressBookLog {
 	}
 		
 }
-<<<<<<< HEAD
-	
-}
-=======
 
 	
 	public void deleteDuplicate(String firstname, String lastname) {
@@ -106,8 +102,8 @@ public class AddressBookLog {
 		for(int i=0; i<directory.size();i++) {
 			
 		if(delete.equals(directory.get(i).getFirst_name()))
-			directory.remove(i);
-		System.out.println("Details of "+delete+" removed");
+			{directory.remove(i);
+		System.out.println("Details of "+delete+" removed");}
 		}
 	}
 
@@ -117,17 +113,28 @@ public class AddressBookLog {
 boolean duplicate = false;
 		
 		for(int i=0;i<directory.size();i++) {
-			if(directory.get(i).getFirst_name() == first_name && directory.get(i).getLast_name() == last_name )
+			if(directory.get(i).getFirst_name().equals(first_name) && directory.get(i).getLast_name().equals(last_name) )
 				duplicate = true;
 		}
 		
 		return duplicate;
 	}
 
+	public void search( String state) {
+	
+		for(ContactPerson person : directory) {
+			
+			if(person.getState().equals(state) || person.getCity().equals(state))
+			{
+				System.out.println(person.getFirst_name()+"\n"+person.getLast_name()+"\n"+person.getState()+"\n"+person.getAddress()+"\n"+person.getCity()+"\n"+person.getPhone_number()+"\n"+person.getZip_code()+"\n"+person.getEmail_Id());
+				break;
+			}
+			else
+				System.out.println("No Entry Found");
+			
+		}
+	}
+
 
 	
 }
-<<<<<<< HEAD
->>>>>>> UC_4_Delete_Contact
-=======
->>>>>>> UC_6_Dictionary_Multiple_Contacts
