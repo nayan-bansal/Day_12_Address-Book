@@ -26,7 +26,7 @@ public class AddressBookMain {
 			
 			AddressBookDic file = new AddressBookDic();
 			
-			System.out.println("- Press 1 to Add Contact\n- Press 2 to Edit the contact\n- Press 3 to Delete contact\n- Press 0 to Exit");
+			System.out.println("- Press 1 to Add Contact\n- Press 2 to Edit the contact\n- Press 3 to Delete contact\n- Press 4 to Search Contact\n- Press 0 to Exit");
 			int choice = scan.nextInt();
 			
 			switch(choice) {
@@ -78,30 +78,22 @@ public class AddressBookMain {
 			case 2:
 				System.out.println("Enter the First Name of Person whoose contact you want to change");
 				String edit  = scan.next();
-<<<<<<< HEAD
-<<<<<<< HEAD
-				
-				address.editContact(edit);
-=======
-				address.editContact(edit);
-=======
 				address.editContact(edit,name);
->>>>>>> UC_6_Dictionary_Multiple_Contacts
 				break;
 			case 3: 
 				System.out.println("Enter the First Name of Person whoose contact you want to change");
 				String delete = scan.next();
 				address.deleteContact(delete);
 				break;
+			case 4:
+				System.out.println("Enter the State/City to be searched");
+				String state = scan.next();
+				address.search(state);
+				break;
 			default:
 				System.out.println("Wrong Entry");
 				break;
-<<<<<<< HEAD
->>>>>>> UC_4_Delete_Contact
-			}
-=======
 			 }
->>>>>>> UC_6_Dictionary_Multiple_Contacts
 			
 		
 		   }
