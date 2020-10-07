@@ -54,8 +54,21 @@ public class AddressBookMain {
 			case 2:
 				System.out.println("Enter the First Name of Person whoose contact you want to change");
 				String edit  = scan.next();
+<<<<<<< HEAD
 				
 				address.editContact(edit);
+=======
+				address.editContact(edit);
+				break;
+			case 3: 
+				System.out.println("Enter the First Name of Person whoose contact you want to change");
+				String delete = scan.next();
+				address.deleteContact(delete);
+				break;
+			default:
+				System.out.println("Wrong Entry");
+				break;
+>>>>>>> UC_4_Delete_Contact
 			}
 			
 		

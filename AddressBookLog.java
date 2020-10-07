@@ -86,5 +86,20 @@ public class AddressBookLog {
 	}
 		
 }
+<<<<<<< HEAD
 	
 }
+=======
+
+	public void deleteContact(String delete) {
+		
+		for(int i=0; i<directory.size();i++) {
+			
+		if(delete.equals(directory.get(i).getFirst_name()))
+			directory.remove(i);
+		System.out.println("Details of "+delete+" removed");
+		}
+	}
+	
+}
+>>>>>>> UC_4_Delete_Contact
