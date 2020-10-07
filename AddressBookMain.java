@@ -26,7 +26,7 @@ public class AddressBookMain {
 			
 			AddressBookDic file = new AddressBookDic();
 			
-			System.out.println("- Press 1 to Add Contact\n- Press 2 to Edit the contact\n- Press 3 to Delete contact\n- Press 4 to Search Contact\n- Press 0 to Exit");
+			System.out.println("- Press 1 to Add Contact\n- Press 2 to Edit the contact\n- Press 3 to Delete contact\n- Press 4 to Search Contact\n- Press 5 to Search person by City\n- Press 6 to Search person by State\n- Press 0 to Exit");
 			int choice = scan.nextInt();
 			
 			switch(choice) {
@@ -86,9 +86,21 @@ public class AddressBookMain {
 				address.deleteContact(delete);
 				break;
 			case 4:
-				System.out.println("Enter the State/City to be searched");
+				System.out.println("Enter the First Name to be searched");
+				String f_name = scan.next();
+				System.out.println("Enter the Last Name to be searched");
+				String l_name = scan.next();
+				address.search(f_name,l_name);
+				break;
+			case 5:
+				System.out.println("Enter the City to be searched");
+				String city = scan.next();
+				address.searchPerson(city);
+				break;
+			case 6:
+				System.out.println("Enter the State to be searched");
 				String state = scan.next();
-				address.search(state);
+				address.searchPersonState(state);
 				break;
 			default:
 				System.out.println("Wrong Entry");
