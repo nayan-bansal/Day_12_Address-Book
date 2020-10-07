@@ -6,21 +6,19 @@ public class AddressBookLog {
 
 	ArrayList<ContactPerson> directory = new ArrayList<ContactPerson>();
 	
-	AddressBookDic file = new AddressBookDic();
 	
-	public void addContact(ContactPerson person, String name) {
+	
+	public void addContact(ContactPerson person) {
 		
 		directory.add(person);
-		
-		file.addDic(name,person);
-		
+
 	}
 
-	public void editContact(String name) {
+	public void editContact(String name, String edit) {
 		
 		Scanner scan = new Scanner(System.in);
 		
-		for(int j=0;j<file.lenDictionary();j++) {
+		
 	for(int i=0;i<directory.size();i++) {
 		
 		ContactPerson p = (ContactPerson)directory.get(i);
@@ -78,6 +76,8 @@ public class AddressBookLog {
 				break;
 			}
 		}
+		else
+			System.out.println("No Entry Found");
 	
 		System.out.println("Do you want to update another entry?\nPress 1 for yes\nPress 2 for No");
 		int ch = scan.nextInt();
@@ -86,7 +86,7 @@ public class AddressBookLog {
 		else
 			break;
 	}
-		}
+		
 }
 
 	public void deleteContact(String delete) {
