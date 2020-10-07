@@ -13,59 +13,67 @@ public class AddressBookMain {
 		ContactPerson person = new ContactPerson();
 		
 		System.out.println("Welcome to Address Book Developement Program");	
-		
+		outer:
 		while(true) {
-		System.out.println("Do you want to create an Address Book\n- Press 1 for yes\n- Press 2 for No");	
-		int start  = scan.nextInt();
-		
-		if(start == 2)
-			System.exit(0);
+			System.out.println("Do you want to create an address book or add contact to an existing Address Book\n- Press 1 for yes\n- Press 2 for No");	
+			int start  = scan.nextInt();
+			if(start == 2)
+				System.exit(0);
 			
+		System.out.println("Enter the name of new Address Book or existing address book");
 		String name = scan.next();
-		
+			
+			AddressBookDic file = new AddressBookDic();
+			
 			System.out.println("- Press 1 to Add Contact\n- Press 2 to Edit the contact\n- Press 3 to Delete contact\n- Press 0 to Exit");
 			int choice = scan.nextInt();
 			
 			switch(choice) {
 			case 0:
 				System.out.println("Thank You for Visting the Address Book");
-				System.exit(0);
-				break;
+				//System.exit(0);
+				break outer;
 			case 1:
 				System.out.println("Enter the First Name:");
 				person.setFirst_name(scan.next());
-				address.addContact(person,name);
+				address.addContact(person);
 				System.out.println("Enter the Last Name:");
 				person.setLast_name(scan.next());
-				address.addContact(person,name);
+				address.addContact(person);
 				System.out.println("Enter the Address:");
 				person.setAddress(scan.next());
-				address.addContact(person,name);
+				address.addContact(person);
 				System.out.println("Enter the City:");
 				person.setCity(scan.next());
-				address.addContact(person,name);
+				address.addContact(person);
 				System.out.println("Enter the State");
 				person.setState(scan.next());
-				address.addContact(person,name);
+				address.addContact(person);
 				System.out.println("Enter the Phone Number");
 				person.setPhone_number(scan.nextDouble());
-				address.addContact(person,name);
+				address.addContact(person);
 				System.out.println("Enter the Zip Code");
 				person.setZip_code(scan.nextInt());
-				address.addContact(person,name);
+				address.addContact(person);
 				System.out.println("Enter the Email Id");
 				person.setEmail_Id(scan.next());
-				address.addContact(person, name);
+				address.addContact(person);
+				
+				file.addDic(name,person);
 				break;
 			
 			case 2:
 				System.out.println("Enter the First Name of Person whoose contact you want to change");
 				String edit  = scan.next();
 <<<<<<< HEAD
+<<<<<<< HEAD
 				
 				address.editContact(edit);
 =======
 				address.editContact(edit);
+=======
+				address.editContact(edit,name);
+>>>>>>> UC_6_Dictionary_Multiple_Contacts
 				break;
 			case 3: 
 				System.out.println("Enter the First Name of Person whoose contact you want to change");
@@ -75,11 +83,16 @@ public class AddressBookMain {
 			default:
 				System.out.println("Wrong Entry");
 				break;
+<<<<<<< HEAD
 >>>>>>> UC_4_Delete_Contact
 			}
+=======
+			 }
+>>>>>>> UC_6_Dictionary_Multiple_Contacts
 			
 		
+		   }
 		}
-
 	}	
-}
+
+
