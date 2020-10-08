@@ -26,7 +26,7 @@ public class AddressBookMain {
 			
 			AddressBookDic file = new AddressBookDic();
 			
-			System.out.println("- Press 1 to Add Contact\n- Press 2 to Edit the contact\n- Press 3 to Delete contact\n- Press 4 to Search Contact\n- Press 5 to Search person by City\n- Press 6 to Search person by State\n- Press 7 to count persons by City\n- Press 8 to count persons by state\n- Press 0 to Exit");
+			System.out.println("- Press 1 to Add Contact\n- Press 2 to Edit the contact\n- Press 3 to Delete contact\n- Press 4 to Search Contact\n- Press 5 to Search person by City\n- Press 6 to Search person by State\n- Press 7 to count persons by City\n- Press 8 to count persons by state\n- Press 9 to Sort by Name\n- Press 0 to Exit");
 			int choice = scan.nextInt();
 			
 			switch(choice) {
@@ -37,13 +37,15 @@ public class AddressBookMain {
 			case 1:
 				
 				System.out.println("Enter the First Name:");
-				person.setFirst_name(scan.next());
-				address.addContact(person);
-				String fname = person.getFirst_name();
+				//
+				//address.addContact(person);
+				String fname = scan.next();
+				//String fname = person.getFirst_name();
 				System.out.println("Enter the Last Name:");
-				person.setLast_name(scan.next());
-				address.addContact(person);
-				String lname = person.getLast_name();
+				//person.setLast_name(scan.next());
+				//address.addContact(person);
+				String lname = scan.next();
+				//String lname = person.getLast_name();
 				
 				if(address.checkName(fname, lname) == true && count!=0)
 				{
@@ -51,6 +53,11 @@ public class AddressBookMain {
 					address.deleteDuplicate(fname, lname);
 					break;
 				}
+				else {
+					person.setFirst_name(fname);
+					person.setLast_name(lname);
+				}
+				
 				System.out.println("Enter the Address:");
 				person.setAddress(scan.next());
 				address.addContact(person);
@@ -111,6 +118,14 @@ public class AddressBookMain {
 				System.out.println("Enter the State in which contacts are to be found");
 				String count_state = scan.next();
 				address.countbycity(count_state);
+				break;
+			case 9:
+				List<String> sortbyname = new ArrayList<>();
+				sortbyname = address.sortbyname();
+				
+				for(String i : sortbyname) {
+					System.out.println(i);
+				}
 				break;
 			default:
 				System.out.println("Wrong Entry");
