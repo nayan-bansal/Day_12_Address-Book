@@ -1,11 +1,18 @@
-package com.bridgelabz;
 
 import java.util.*;
+import java.util.stream.*;
 
 public class AddressBookLog {
 
-	ArrayList<ContactPerson> directory = new ArrayList<ContactPerson>();
+	private static ArrayList<ContactPerson> directory = new ArrayList<ContactPerson>();
 	
+	public void setPerson(ArrayList<ContactPerson> directory) {
+		this.directory = directory;
+	}
+
+	public static ArrayList<ContactPerson> getDirectory() {
+		return directory;
+	}
 	
 	
 	public void addContact(ContactPerson person) {
@@ -92,7 +99,7 @@ public class AddressBookLog {
 	
 	public void deleteDuplicate(String firstname, String lastname) {
 		for(int i=0; i<directory.size();i++) {
-		if(firstname.equals(directory.get(i).getFirst_name()) && directory.get(i).getAddress() == null && lastname.equals(directory.get(i).getLast_name()))
+		if(firstname.equals(directory.get(i).getFirst_name())  && lastname.equals(directory.get(i).getLast_name()))
 			directory.remove(i);
 		} 
 	}
@@ -112,9 +119,16 @@ public class AddressBookLog {
 	public boolean checkName(String first_name, String last_name) {
 boolean duplicate = false;
 		
-		for(int i=0;i<directory.size();i++) {
-			if(directory.get(i).getFirst_name().equals(first_name) && directory.get(i).getLast_name().equals(last_name) )
+		for(ContactPerson person : directory ) {
+			if(first_name.equals(person.getFirst_name()) &&   last_name.equals(person.getLast_name())      )
+			{
+				
 				duplicate = true;
+				break;
+			}
+			
+			else
+				duplicate = false;
 		}
 		
 		return duplicate;
@@ -200,5 +214,10 @@ boolean duplicate = false;
 			else
 			System.out.println("No Persons in given State");		
 		
+	}
+
+	public List<String> sortbyname() {
+		List<String> sort = getDirectory().stream().map(ContactPerson -> ContactPerson.toString()).sorted().collect(Collectors.toList());
+		return sort;
 	}
 }
