@@ -1,3 +1,4 @@
+
 package com.bridgelabz;
 
 import java.util.*;
@@ -120,12 +121,20 @@ public class AddressBookMain {
 				address.countbycity(count_state);
 				break;
 			case 9:
-				List<String> sortbyname = new ArrayList<>();
-				sortbyname = address.sortbyname();
-				
-				for(String i : sortbyname) {
-					System.out.println(i);
+				System.out.println("Press 1 to sort by first name\nPress 2 to sort by City\nPress 3 to sort by Zip Code");
+				int ch = scan.nextInt();
+				switch(ch) {
+				case 1:
+					address.Sort_name();
+					break;
+				case 2:
+					address.Sort_City();
+					break;
+				case 3:
+					address.Sort_Zip();
+					break;
 				}
+				
 				break;
 			default:
 				System.out.println("Wrong Entry");
@@ -135,5 +144,4 @@ public class AddressBookMain {
 		   }
 		}
 	}	
-
 
