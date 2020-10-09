@@ -1,3 +1,4 @@
+package com.bridgelabz;
 
 import java.util.*;
 import java.util.stream.*;
@@ -216,8 +217,49 @@ boolean duplicate = false;
 		
 	}
 
-	public List<String> sortbyname() {
-		List<String> sort = getDirectory().stream().map(ContactPerson -> ContactPerson.toString()).sorted().collect(Collectors.toList());
-		return sort;
+	public  List<ContactPerson> Sort_name() {
+		
+		List<ContactPerson> sortedByFname = new ArrayList<ContactPerson>();
+		
+		directory.sort((con1, con2) -> con1.getFirst_name().compareTo(con2.getFirst_name()));
+	
+		sortedByFname = directory;
+		
+		for (ContactPerson p : sortedByFname) {
+			System.out.println(p);
+		}
+		
+		return sortedByFname;
 	}
+
+	public  List<ContactPerson> Sort_City() {
+		List<ContactPerson> sortedByFname = new ArrayList<ContactPerson>();
+		
+		directory.sort((con1, con2) -> con1.getFirst_name().compareTo(con2.getFirst_name()));
+	
+		sortedByFname = directory;
+		
+		for (ContactPerson p : sortedByFname) {
+			System.out.println(p);
+		}
+		
+		return sortedByFname;		
+	}
+
+	public  List<ContactPerson> Sort_Zip() {
+		List<ContactPerson> sortedByFname = new ArrayList<ContactPerson>();
+		
+		directory.sort((con1, con2) -> con1.getFirst_name().compareTo(con2.getFirst_name()));
+	
+		sortedByFname = directory;
+		
+		for (ContactPerson p : sortedByFname) {
+			System.out.println(p);
+		}
+		
+		return sortedByFname;		
+	}
+
+	
+	
 }
