@@ -1,7 +1,10 @@
+package day.address.book;
 
-package com.bridgelabz;
+import java.util.Scanner;
 
-import java.util.*;
+import day.address.book.AddressBookDic;
+import day.address.book.AddressBookLog;
+import day.address.book.ContactPerson;
 
 public class AddressBookMain {
 
@@ -144,4 +147,3 @@ public class AddressBookMain {
 		   }
 		}
 	}	
-
