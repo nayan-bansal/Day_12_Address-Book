@@ -1,9 +1,14 @@
-package com.bridgelabz;
+package day.address.book;
 
+import java.io.IOException;
 import java.util.*;
 import java.util.stream.*;
 
 public class AddressBookLog {
+	
+	public enum IOService {
+		CONSOLE_IO, FILE_IO, DB_IO, REST_IO
+	}
 
 	private static ArrayList<ContactPerson> directory = new ArrayList<ContactPerson>();
 	
@@ -227,6 +232,7 @@ boolean duplicate = false;
 		
 		for (ContactPerson p : sortedByFname) {
 			System.out.println(p);
+			
 		}
 		
 		return sortedByFname;
@@ -241,6 +247,7 @@ boolean duplicate = false;
 		
 		for (ContactPerson p : sortedByFname) {
 			System.out.println(p);
+		
 		}
 		
 		return sortedByFname;		
@@ -260,6 +267,20 @@ boolean duplicate = false;
 		return sortedByFname;		
 	}
 
+	public void writeAddressBookData(IOService ioService) throws IOException {
+		if (ioService.equals(IOService.CONSOLE_IO))
+			System.out.println("Contact Person Data " + directory);
+		else if (ioService.equals(IOService.FILE_IO)) {
+			new AddressBookIO().writeData(directory);
+		}
+	}
 	
+	@SuppressWarnings("unchecked")
+	public static List<ContactPerson> readPersonData(IOService fileIo) {
+		ArrayList<ContactPerson> personInfo = null;
+		if (fileIo.equals(IOService.FILE_IO))
+			personInfo = (ArrayList<ContactPerson>) new AddressBookIO().readData();
+		return personInfo;
+	}
 	
 }
