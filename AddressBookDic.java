@@ -1,5 +1,6 @@
-package com.bridgelabz;
-import java.util.*;
+package day.address.book;
+
+import java.util.HashMap;
 
 public class AddressBookDic {
 	private HashMap<String, ContactPerson> dictionary =new HashMap<>();
