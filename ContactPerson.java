@@ -1,4 +1,4 @@
-package com.bridgelabz;
+package day.address.book;
 
 public class ContactPerson {
 
@@ -10,6 +10,19 @@ public class ContactPerson {
 	private int zip_code; 
 	private double phone_number;
 	private String email_Id;
+	
+	
+	public ContactPerson() {
+		super();
+		this.first_name = first_name;
+		this.last_name = last_name;
+		this.address = address;
+		this.city = city;
+		this.state = state;
+		this.zip_code = zip_code;
+		this.phone_number = phone_number;
+		this.email_Id = email_Id;
+	}
 	
 	
 	public String getFirst_name () {
@@ -67,8 +80,14 @@ public class ContactPerson {
 		return phone_number;
 	}
 	
-	public void setEmail_Id(String emai_Id) {
+	public void setEmail_Id(String email_Id) {
 		this.email_Id  = email_Id;
+	}
+	
+	public String toString() {
+		return "First Name: " + this.first_name + " Last Name: " + this.last_name + " Address: " + this.address
+				+ " City: " + this.city + " State: " + this.state + " Zip: " + this.zip_code + " Phone Number: "
+				+ this.phone_number + " Email: " + this.email_Id;
 	}
 	
 }
