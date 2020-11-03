@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.Test;
@@ -26,5 +27,14 @@ public class AddressBookTest {
 		addressBookService.updateContactDetails("nayan", "sector-6");
 		boolean result = addressBookService.checkConatctDetailsInSyncWithDB("nayan");
 		Assert.assertTrue(result);
+	}
+	@Test
+	public void givenDateRange_WhenRetrieved_ShouldMatchEmployeeCount() {
+		AddressBookService addressBookService = new AddressBookService();
+		addressBookService.readContactData();
+		LocalDate startDate = LocalDate.of(2018, 01, 01);
+		LocalDate endDate = LocalDate.now();
+		List<ContactPerson> contactList = addressBookService.readContactDataForDateRange(startDate, endDate);
+		Assert.assertEquals(2, contactList.size());
 	}
 }
