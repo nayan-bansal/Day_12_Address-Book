@@ -5,7 +5,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class AddressBookDBService {
@@ -23,9 +25,9 @@ public class AddressBookDBService {
 	}
 
 	public Connection getConnection() throws SQLException {
-		String jdbcURL = "jdbc:mysql://localhost:3307/address_book_service?useSSL=false";
+		String jdbcURL = "jdbc:mysql://localhost:3306/address_book_service?useSSL=false";
 		String userName = "root";
-		String password = "nayan@1965";
+		String password = "Ikdn@1234";
 		Connection connection;
 		System.out.println("connecting to database: " + jdbcURL);
 		connection = DriverManager.getConnection(jdbcURL, userName, password);
@@ -75,7 +77,7 @@ public class AddressBookDBService {
 		}
 		return contactList;
 	}
-	
+
 	public int updateEmployeeData(String name, String address) {
 		return this.updateContactDataUsingPreparedStatement(name, address);
 	}
@@ -107,7 +109,7 @@ public class AddressBookDBService {
 		}
 		return contactList;
 	}
-	
+
 	private void prepareStatementForContactData() {
 		try {
 			Connection connection = addressBookDBService.getConnection();
@@ -119,5 +121,15 @@ public class AddressBookDBService {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public List<ContactPerson> getContactForDateRange(LocalDate startDate, LocalDate endDate) {
+		String sql = String.format(
+				"SELECT c.first_name, c.last_name,c.address_book_name,c.address,c.city,"
+						+ "c.state,c.zip,c.phone_number,c.email,abd.address_book_type "
+						+ "from contact_details c inner join address_book_dict abd "
+						+ "on c.address_book_name=abd.address_book_name where date_added between '%s' AND '%s'; ",
+				Date.valueOf(startDate), Date.valueOf(endDate));
+		return this.getContactDetailsUsingSqlQuery(sql);
 	}
 }
