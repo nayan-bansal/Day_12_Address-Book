@@ -42,4 +42,13 @@ public class ContactPerson {
 				+ this.phoneNo + " Email: " + this.email + " Address book name" + this.addressBookName + " type"
 				+ addressBookType;
 	}
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		ContactPerson that = (ContactPerson) o;
+		return firstName.equals(that.firstName) && address.equals(that.address);
+	}
 }
