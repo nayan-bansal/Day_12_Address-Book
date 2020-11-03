@@ -9,6 +9,7 @@ public class AddressBookService {
 
 	private List<ContactPerson> contactList;
 	private AddressBookDBService addressBookDBService;
+	private AddressBookDBServiceNew addressBookDBServiceNew;
 	private Map<String, Integer> contactByCity;
 
 	public AddressBookService(List<ContactPerson> contactList) {
@@ -18,6 +19,7 @@ public class AddressBookService {
 
 	public AddressBookService() {
 		addressBookDBService = AddressBookDBService.getInstance();
+		addressBookDBServiceNew=AddressBookDBServiceNew.getInstance();
 	}
 
 	public List<ContactPerson> readContactData() {
@@ -49,7 +51,14 @@ public class AddressBookService {
 	}
 
 	public Map<String, Integer> readContactByCityOrState() {
-		this.contactByCity=addressBookDBService.getContactByCity();
+		this.contactByCity = addressBookDBService.getContactByCity();
 		return contactByCity;
+	}
+
+	public void addContactToAddressBook(String firstName, String lastName, String address, String city, String state,
+			String zip, String phoneNumber, String email, String addressBookName, String addressBookType,
+			LocalDate date) {
+		contactList.add(addressBookDBServiceNew.addContact(firstName, lastName, address, city, state, zip, phoneNumber,
+				email, addressBookName, addressBookType, date));
 	}
 }
