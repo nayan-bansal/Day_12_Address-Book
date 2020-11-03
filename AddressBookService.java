@@ -2,11 +2,14 @@ package day.address.book;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
+
 
 public class AddressBookService {
 
 	private List<ContactPerson> contactList;
 	private AddressBookDBService addressBookDBService;
+	private Map<String, Integer> contactByCity;
 
 	public AddressBookService(List<ContactPerson> contactList) {
 		this();
@@ -43,5 +46,10 @@ public class AddressBookService {
 	public List<ContactPerson> readContactDataForDateRange(LocalDate startDate, LocalDate endDate) {
 		this.contactList = addressBookDBService.getContactForDateRange(startDate, endDate);
 		return contactList;
+	}
+
+	public Map<String, Integer> readContactByCityOrState() {
+		this.contactByCity=addressBookDBService.getContactByCity();
+		return contactByCity;
 	}
 }
