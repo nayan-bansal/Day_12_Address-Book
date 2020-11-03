@@ -1,19 +1,21 @@
 package day.address.book;
 
+import java.beans.Statement;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 public class AddressBookDBService {
+	private static Logger log = Logger.getLogger(AddressBookDBService.class.getName());
 	private PreparedStatement ContactDataStatement;
 	private static AddressBookDBService addressBookDBService;
 
@@ -32,9 +34,9 @@ public class AddressBookDBService {
 		String userName = "root";
 		String password = "nayan@1965";
 		Connection connection;
-		System.out.println("connecting to database: " + jdbcURL);
+		log.info("connecting to database: " + jdbcURL);
 		connection = DriverManager.getConnection(jdbcURL, userName, password);
-		System.out.println("connection successful !!!! " + connection);
+		log.info("connection successful !!!! " + connection);
 		return connection;
 	}
 
@@ -140,7 +142,7 @@ public class AddressBookDBService {
 		String sql = "SELECT city, count(first_name) as count from contact_details group by city; ";
 		Map<String, Integer> contactByCityMap = new HashMap<>();
 		try (Connection connection = AddressBookDBService.getConnection()) {
-			Statement statement = connection.createStatement();
+			java.sql.Statement statement = connection.createStatement();
 			ResultSet result = statement.executeQuery(sql);
 			while (result.next()) {
 				String city = result.getString("city");
