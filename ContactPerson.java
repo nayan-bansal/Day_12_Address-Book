@@ -1,6 +1,7 @@
 package day.address.book;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class ContactPerson {
 	public String firstName;
@@ -50,6 +51,12 @@ public class ContactPerson {
 				+ " City: " + this.city + " State: " + this.state + " Zip: " + this.zip + " Phone Number: "
 				+ this.phoneNo + " Email: " + this.email + " Address book name" + this.addressBookName + " type"
 				+ addressBookType;
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(firstName, lastName, address, city, state, zip, phoneNo, email, addressBookName,
+				date);
 	}
 
 	@Override
