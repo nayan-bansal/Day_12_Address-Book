@@ -1,5 +1,7 @@
 package day.address.book;
 
+import java.time.LocalDate;
+
 public class ContactPerson {
 	public String firstName;
 	public String lastName;
@@ -11,6 +13,7 @@ public class ContactPerson {
 	public String email;
 	public String addressBookName;
 	public String addressBookType;
+	public LocalDate date;
 
 	public ContactPerson(String firstName, String lastName, String address, String city, String state, String zip,
 			String phoneNo, String email) {
@@ -32,6 +35,12 @@ public class ContactPerson {
 		this.addressBookType = addressBookType;
 	}
 
+	public ContactPerson(String firstName, String lastName, String address, String city, String state, String zip,
+			String phoneNo, String email, String addressBookName, String addressBookType, LocalDate date) {
+		this(firstName, lastName, address, city, state, zip, phoneNo, email, addressBookName, addressBookType);
+		this.date = date;
+	}
+
 	public ContactPerson() {
 	}
 
@@ -42,6 +51,7 @@ public class ContactPerson {
 				+ this.phoneNo + " Email: " + this.email + " Address book name" + this.addressBookName + " type"
 				+ addressBookType;
 	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o)
