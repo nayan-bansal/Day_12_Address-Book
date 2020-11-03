@@ -1,12 +1,13 @@
 package day.address.book;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+import java.util.logging.Logger;
 
 public class AddressBookService {
-
+	private static Logger log = Logger.getLogger(AddressBookService.class.getName());
 	private List<ContactPerson> contactList;
 	private AddressBookDBService addressBookDBService;
 	private AddressBookDBServiceNew addressBookDBServiceNew;
@@ -19,7 +20,7 @@ public class AddressBookService {
 
 	public AddressBookService() {
 		addressBookDBService = AddressBookDBService.getInstance();
-		addressBookDBServiceNew=AddressBookDBServiceNew.getInstance();
+		addressBookDBServiceNew = AddressBookDBServiceNew.getInstance();
 	}
 
 	public List<ContactPerson> readContactData() {
@@ -60,5 +61,29 @@ public class AddressBookService {
 			LocalDate date) {
 		contactList.add(addressBookDBServiceNew.addContact(firstName, lastName, address, city, state, zip, phoneNumber,
 				email, addressBookName, addressBookType, date));
+	}
+
+	public void addEmployeeToPayrollWithThreads(List<ContactPerson> contactList) {
+		Map<Integer, Boolean> employeeAdditionStatus = new HashMap<>();
+		contactList.forEach(personInfo -> {
+			Runnable task = () -> {
+				employeeAdditionStatus.put(personInfo.hashCode(), false);
+				log.info("Contact being added : " + Thread.currentThread().getName());
+				this.addContactToAddressBook(personInfo.firstName, personInfo.lastName, personInfo.address,
+						personInfo.city, personInfo.state, personInfo.zip, personInfo.phoneNo, personInfo.email,
+						personInfo.addressBookName, personInfo.addressBookType, personInfo.date);
+				employeeAdditionStatus.put(personInfo.hashCode(), true);
+				log.info("Contact added : " + Thread.currentThread().getName());
+			};
+			Thread thread = new Thread(task, personInfo.firstName);
+			thread.start();
+		});
+		while (employeeAdditionStatus.containsValue(false)) {
+			try {
+				Thread.sleep(10);
+			} catch (InterruptedException e) {
+			}
+		}
+		log.info("" + this.contactList);
 	}
 }
