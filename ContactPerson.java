@@ -16,19 +16,77 @@ public class ContactPerson {
 	public String addressBookType;
 	public LocalDate date;
 
-	public ContactPerson(String firstName, String lastName, String address, String city, String state, String zip,
-			String phoneNo, String email) {
+	public ContactPerson(String firstName, String lastName, String address, String city, String state, String zip2,
+			String phoneNo2, String email) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.address = address;
 		this.city = city;
 		this.state = state;
-		this.zip = zip;
-		this.phoneNo = phoneNo;
+		this.zip = zip2;
+		this.phoneNo = phoneNo2;
 		this.email = email;
 	}
 
+	public String getFirst_name () {
+		return firstName;
+	}
+
+	
+	public void setFirst_name(String first_name) {
+		this.firstName  = first_name;
+	}
+	
+	public String getLast_name () {
+		return lastName;
+	}
+	
+	public void setLast_name(String last_name) {
+		this.lastName  = last_name;
+	}
+	public String getAddress () {
+		return address;
+	}
+	
+	public void setAddress(String address) {
+		this.address  = address;
+	}
+	public String getState () {
+		return state;
+	}
+	
+	public void setState (String state) {
+		this.state  = state;
+	}
+	
+	public String getCity () {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city  = city;
+	}
+	public String getZip_code () {
+		return zip;
+	}
+	
+	public void setZip_code(String zip_code) {
+		this.zip  = zip_code;
+	}
+	public String getEmail_Id () {
+		return email;
+	}
+	
+	public void setPhone_number(String phone_number) {
+		this.phoneNo  = phone_number;
+	}
+	public String getPhone_number () {
+		return phoneNo;
+	}
+	
+	public void setEmail_Id(String emai_Id) {
+		this.email = email;
+	}
 	public ContactPerson(String firstName, String lastName, String address, String city, String state, String zip,
 			String phoneNo, String email, String addressBookName, String addressBookType) {
 		this(firstName, lastName, address, city, state, zip, phoneNo, email);
