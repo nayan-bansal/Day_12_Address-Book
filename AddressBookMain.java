@@ -72,10 +72,10 @@ public class AddressBookMain {
 				person.setState(scan.next());
 				address.addContact(person);
 				System.out.println("Enter the Phone Number");
-				person.setPhone_number(scan.nextDouble());
+				person.setPhone_number(scan.next());
 				address.addContact(person);
 				System.out.println("Enter the Zip Code");
-				person.setZip_code(scan.nextInt());
+				person.setZip_code(scan.next());
 				address.addContact(person);
 				System.out.println("Enter the Email Id");
 				person.setEmail_Id(scan.next());
@@ -147,3 +147,5 @@ public class AddressBookMain {
 		   }
 		}
 	}	
+
+
