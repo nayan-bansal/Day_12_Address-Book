@@ -69,12 +69,12 @@ public class AddressBookLog {
 				break;
 			case 6:
 				System.out.println("Enter new Phone Number");
-				directory.get(i).setPhone_number(scan.nextDouble());
+				directory.get(i).setPhone_number(scan.next());
 				System.out.println("Data Updated");
 				break;
 			case 7:
 				System.out.println("Enter new Zip code");
-				directory.get(i).setZip_code(scan.nextInt());
+				directory.get(i).setZip_code(scan.next());
 				System.out.println("Data Updated");
 				break;
 			case 8:
@@ -284,3 +284,4 @@ boolean duplicate = false;
 	}
 	
 }
+
